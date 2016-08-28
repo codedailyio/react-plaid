@@ -2,6 +2,9 @@ import React, {Component, PropTypes} from 'react';
 
 const DEV_ENV = "tartan";
 const PROD_ENV = "production";
+const AUTH_PRODUCT = "auth";
+const CONNECT_PRODUCT = "connect";
+// We use this to handle open/loaded to prevent unnecessary re-rendering
 
 class ReactPlaid extends Component {
   constructor (props, context) {
@@ -40,7 +43,7 @@ class ReactPlaid extends Component {
       this.handleOpen();
     } else if (prevProps.open && !this.props.open) {
       // Close?
-      // Plaid provides no method to close
+      // Plaid provides no method to close :(
     }
   }
 
@@ -101,7 +104,7 @@ ReactPlaid.propTypes = {
   key: PropTypes.string.isRequired,
 
   // The Plaid product you wish to use, either auth or connect.
-  product: PropTypes.oneOf(['auth', 'connect',]).isRequired,
+  product: PropTypes.oneOf([AUTH_PRODUCT, CONNECT_PRODUCT]).isRequired,
 
   // Specify an existing user's public token to launch Link in update mode.
   // This will cause Link to open directly to the authentication step for
@@ -134,4 +137,4 @@ ReactPlaid.propTypes = {
 };
 
 export default ReactPlaid;
-export { DEV_ENV, PROD_ENV };
+export { DEV_ENV, PROD_ENV, AUTH_PRODUCT, CONNECT_PRODUCT };

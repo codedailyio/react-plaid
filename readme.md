@@ -27,3 +27,36 @@ render() {
   </div>
 }
 ```
+
+
+Full Examples
+
+```
+import ReactPlaid, { DEV_ENV, PROD_ENV, CONNECT_PRODUCT } from "react-plaid";
+
+class MyPlaidStuff extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      open: false,
+      plaidData: [],
+    }
+  }
+  render() {
+    <div>
+      <button onClick={() => this.setState({ open: true})}>Open Plaid</button>
+      {
+        this.state.plaidData.map(({ institution }) => <div>{institution.name} - {institution.type}</div>)
+      }
+      <ReactPlaid 
+        clientName="Client Name"
+        product={CONNECT_PRODUCT}
+        key="123"
+        env={DEV_ENV}
+        open={this.state.open} 
+        onSuccess={(token, metaData) => this.setState({plaidData: metaData})}
+        onExit={() => this.setState({open: false})} 
+      />
+    </div>
+  }
+}
