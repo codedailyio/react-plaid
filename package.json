@@ -2,9 +2,12 @@
   "name": "react-plaid",
   "version": "0.1.0",
   "description": "React plaid link",
-  "main": "index.js",
+  "main": "lib/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf lib dist",
+    "build": "babel src --out-dir lib",
+    "build:umd": "webpack src/index.js dist/react_plaid.js",
+    "prepublish": "npm run clean && npm run build && npm run build:umd"
   },
   "author": "Jason Brown (browniefed)",
   "license": "MIT",
@@ -19,5 +22,14 @@
   "bugs": {
     "url": "https://github.com/TinRod/react-plaid/issues"
   },
-  "homepage": "https://github.com/TinRod/react-plaid#readme"
+  "homepage": "https://github.com/TinRod/react-plaid#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "rimraf": "^2.5.4",
+    "webpack": "^1.13.2"
+  }
 }

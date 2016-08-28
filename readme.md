@@ -4,9 +4,14 @@ Unforunately there is no close method on Plaid Link.
 
 This plaid component depends on a global Plaid existing (from plaid-link script tag on the page). This may change in the future.
 
-Be sure to handle changing `open` back to `false` with the `onExit` function.
+Be sure to handle changing `open` back to `false` with the `onExit` function otherwise you will not be able to re-open.
 
-Examples:
+
+## Important
+
+This requires you have `<script src="https://cdn.plaid.com/link/stable/link-initialize.js">` on the page before your React executes.
+
+### Example Renderings:
 ```
 render() {
   <ReactPlaid open={this.state.open} onExit={() => this.setState({open: false})}>
@@ -29,7 +34,7 @@ render() {
 ```
 
 
-Full Examples
+### Full Example
 
 ```
 import ReactPlaid, { DEV_ENV, PROD_ENV, CONNECT_PRODUCT } from "react-plaid";
