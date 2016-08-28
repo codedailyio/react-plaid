@@ -1,0 +1,23 @@
+{
+  "name": "react-plaid",
+  "version": "0.1.0",
+  "description": "React plaid link",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Brown (browniefed)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/TinRod/react-plaid.git"
+  },
+  "keywords": [
+    "react",
+    "plaid"
+  ],
+  "bugs": {
+    "url": "https://github.com/TinRod/react-plaid/issues"
+  },
+  "homepage": "https://github.com/TinRod/react-plaid#readme"
+}
