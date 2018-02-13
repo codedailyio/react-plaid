@@ -9,7 +9,7 @@ Be sure to handle changing `open` back to `false` with the `onExit` function oth
 
 ## Important
 
-This requires you have `<script src="https://cdn.plaid.com/link/stable/link-initialize.js">` on the page before your React executes.
+This requires you have `<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js">` on the page before your React executes.
 
 ### Example Renderings:
 ```
