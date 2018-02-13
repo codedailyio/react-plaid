@@ -56,7 +56,7 @@ class MyPlaidStuff extends Component {
       <ReactPlaid 
         clientName="Client Name"
         product={CONNECT_PRODUCT}
-        key="123"
+        apiKey="123"
         env={DEV_ENV}
         open={this.state.open} 
         onSuccess={(token, metaData) => this.setState({plaidData: metaData})}
