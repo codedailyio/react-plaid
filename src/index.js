@@ -12,57 +12,22 @@ const IDENTITY_PRODUCT = "identity";
 class ReactPlaid extends Component {
   static propTypes = {
     open: PropTypes.bool,
-    // Displayed once a user has successfully linked their account
     clientName: PropTypes.string.isRequired,
-
-    // The Plaid API environment on which to create user accounts.
-    // For development and testing, use tartan. For production, use production
     env: PropTypes.oneOf([DEV_ENV, PROD_ENV]).isRequired,
-
-    // Open link to a specific institution, for a more custom solution
     institution: PropTypes.string,
-
-    // Set to true to launch Link with longtail institution support enabled.
-    // Longtail institutions are only available with the Connect product.
-    longtail: PropTypes.bool,
-
-    // The public_key associated with your account; available from
-    // the Plaid dashboard (https://dashboard.plaid.com)
     key: PropTypes.string.isRequired,
-
-    // The Plaid product you wish to use, either array of auth/identity/transactions.
     product: PropTypes.array.isRequired,
-
-    // Specify an existing user's public token to launch Link in update mode.
-    // This will cause Link to open directly to the authentication step for
-    // that user's institution.
     token: PropTypes.string,
-
-    // Set to true to launch Link with the 'Select Account' pane enabled.
-    // Allows users to select an individual account once they've authenticated
     selectAccount: PropTypes.bool,
-
-    // Specify a webhook to associate with a user.
     webhook: PropTypes.string,
-
-    // A function that is called when a user has successfully onboarded their
-    // account. The function should expect two arguments, the public_key and a
-    // metadata object
     onSuccess: PropTypes.func.isRequired,
-
-    // A function that is called when a user has specifically exited Link flow
     onExit: PropTypes.func,
-
-    // A function that is called when the Link module has finished loading.
-    // Calls to plaidLinkHandler.open() prior to the onLoad callback will be
-    // delayed until the module is fully loaded.
     onLoad: PropTypes.func,
-    // Called immediately to tell the code is loading
     onLoading: PropTypes.func,
-    // Called when plaid opens. This may be immediately after load, or plaid is still loading this will be called if open is requested but load hasn't succeeded yet
     onOpen: PropTypes.func,
   };
   static defaultProps = {
+    apiVersion: "v2",
     onExit: () => {},
     onSuccess: () => {},
     onLoad: () => {},
@@ -75,15 +40,12 @@ class ReactPlaid extends Component {
 
   componentDidMount() {
     this.linkHandler = Plaid.create({
-      apiVersion: "v2",
+      apiVersion: this.props.apiVersion,
       clientName: this.props.clientName,
       product: this.props.product,
       key: this.props.key,
       env: this.props.env,
-      webhook: this.props.webhook,
-      token: this.props.token,
       selectAccount: this.props.selectAccount,
-      longtail: this.props.longtail,
       onLoad: this.handleLoad,
       onSuccess: this.handleSuccess,
       onExit: this.handleExit,
