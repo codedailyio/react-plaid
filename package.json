@@ -13,16 +13,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/TinRod/react-plaid.git"
+    "url": "git+ssh://git@github.com/codedailyio/react-plaid.git"
   },
   "keywords": [
     "react",
     "plaid"
   ],
   "bugs": {
-    "url": "https://github.com/TinRod/react-plaid/issues"
+    "url": "https://github.com/codedailyio/react-plaid/issues"
   },
-  "homepage": "https://github.com/TinRod/react-plaid#readme",
+  "homepage": "https://github.com/codedailyio/react-plaid#readme",
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
