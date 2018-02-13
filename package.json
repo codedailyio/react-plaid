@@ -7,7 +7,7 @@
     "clean": "rimraf lib dist",
     "build": "babel src --out-dir lib",
     "build:umd": "webpack src/index.js dist/react_plaid.js",
-    "prepublish": "npm run clean && npm run build && npm run build:umd"
+    "prepare": "npm run clean && npm run build && npm run build:umd"
   },
   "author": "Jason Brown (browniefed)",
   "license": "MIT",

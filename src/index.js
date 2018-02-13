@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-const DEV_ENV = "sandbox";
+const DEV_ENV = "development";
+const SANDBOX_DEV = "sandbox";
 const PROD_ENV = "production";
 const AUTH_PRODUCT = "auth";
-const CONNECT_PRODUCT = "connect";
+const TRANSACTIONS_PRODUCT = "transactions";
+const IDENTITY_PRODUCT = "identity";
 // We use this to handle open/loaded to prevent unnecessary re-rendering
 
 class ReactPlaid extends Component {
@@ -28,8 +30,8 @@ class ReactPlaid extends Component {
     // the Plaid dashboard (https://dashboard.plaid.com)
     key: PropTypes.string.isRequired,
 
-    // The Plaid product you wish to use, either auth or connect.
-    product: PropTypes.oneOf([AUTH_PRODUCT, CONNECT_PRODUCT]).isRequired,
+    // The Plaid product you wish to use, either array of auth/identity/transactions.
+    product: PropTypes.array.isRequired,
 
     // Specify an existing user's public token to launch Link in update mode.
     // This will cause Link to open directly to the authentication step for
@@ -129,4 +131,4 @@ class ReactPlaid extends Component {
 }
 
 export default ReactPlaid;
-export { DEV_ENV, PROD_ENV, AUTH_PRODUCT, CONNECT_PRODUCT };
+export { DEV_ENV, SANDBOX_ENV, PROD_ENV, AUTH_PRODUCT, IDENTITY_PRODUCT, TRANSACTIONS_PRODUCT };
