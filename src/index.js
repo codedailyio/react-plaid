@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-const DEV_ENV = "tartan";
+const DEV_ENV = "sandbox";
 const PROD_ENV = "production";
 const AUTH_PRODUCT = "auth";
 const CONNECT_PRODUCT = "connect";
@@ -12,45 +12,45 @@ class ReactPlaid extends Component {
     open: PropTypes.bool,
     // Displayed once a user has successfully linked their account
     clientName: PropTypes.string.isRequired,
-  
+
     // The Plaid API environment on which to create user accounts.
     // For development and testing, use tartan. For production, use production
     env: PropTypes.oneOf([DEV_ENV, PROD_ENV]).isRequired,
-  
+
     // Open link to a specific institution, for a more custom solution
     institution: PropTypes.string,
-  
+
     // Set to true to launch Link with longtail institution support enabled.
     // Longtail institutions are only available with the Connect product.
     longtail: PropTypes.bool,
-  
+
     // The public_key associated with your account; available from
     // the Plaid dashboard (https://dashboard.plaid.com)
     key: PropTypes.string.isRequired,
-  
+
     // The Plaid product you wish to use, either auth or connect.
     product: PropTypes.oneOf([AUTH_PRODUCT, CONNECT_PRODUCT]).isRequired,
-  
+
     // Specify an existing user's public token to launch Link in update mode.
     // This will cause Link to open directly to the authentication step for
     // that user's institution.
     token: PropTypes.string,
-  
+
     // Set to true to launch Link with the 'Select Account' pane enabled.
     // Allows users to select an individual account once they've authenticated
     selectAccount: PropTypes.bool,
-  
+
     // Specify a webhook to associate with a user.
     webhook: PropTypes.string,
-  
+
     // A function that is called when a user has successfully onboarded their
     // account. The function should expect two arguments, the public_key and a
     // metadata object
     onSuccess: PropTypes.func.isRequired,
-  
+
     // A function that is called when a user has specifically exited Link flow
     onExit: PropTypes.func,
-  
+
     // A function that is called when the Link module has finished loading.
     // Calls to plaidLinkHandler.open() prior to the onLoad callback will be
     // delayed until the module is fully loaded.
@@ -73,6 +73,7 @@ class ReactPlaid extends Component {
 
   componentDidMount() {
     this.linkHandler = Plaid.create({
+      apiVersion: "v2",
       clientName: this.props.clientName,
       product: this.props.product,
       key: this.props.key,
@@ -105,22 +106,22 @@ class ReactPlaid extends Component {
       this.linkHandler.open(this.props.institution);
       this.props.onOpen();
     }
-  }
+  };
 
   handleLoad = () => {
     this.loaded = true;
     this.props.onLoad();
     if (this.open) this.handleOpen();
-  }
+  };
 
   handleSuccess = (publicToken, metaData) => {
     this.props.onSuccess(publicToken, metaData);
-  }
+  };
 
   handleExit = () => {
     this.open = false;
     this.props.onExit();
-  }
+  };
 
   render() {
     return this.props.children || null;
