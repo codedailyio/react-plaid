@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-const DEV_ENV = "sandbox";
+const DEV_ENV = "tartan";
 const PROD_ENV = "production";
 const AUTH_PRODUCT = "auth";
 const CONNECT_PRODUCT = "connect";
@@ -123,7 +123,7 @@ class ReactPlaid extends Component {
   }
 
   render() {
-    return this.props.children;
+    return this.props.children || null;
   }
 }
 
