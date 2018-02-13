@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 const DEV_ENV = "development";
-const SANDBOX_DEV = "sandbox";
+const SANDBOX_ENV = "sandbox";
 const PROD_ENV = "production";
 const AUTH_PRODUCT = "auth";
 const TRANSACTIONS_PRODUCT = "transactions";
