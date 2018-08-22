@@ -25,6 +25,7 @@ class ReactPlaid extends Component {
     onLoad: PropTypes.func,
     onLoading: PropTypes.func,
     onOpen: PropTypes.func,
+    onEvent: PropTypes.func,
   };
   static defaultProps = {
     apiVersion: "v2",
@@ -33,6 +34,7 @@ class ReactPlaid extends Component {
     onLoad: () => {},
     onLoading: () => {},
     onOpen: () => {},
+    onEvent: () => {},
   };
 
   loaded = false;
@@ -49,6 +51,7 @@ class ReactPlaid extends Component {
       onLoad: this.handleLoad,
       onSuccess: this.handleSuccess,
       onExit: this.handleExit,
+      onEvent: this.props.onEvent,
     });
 
     this.props.onLoading();
