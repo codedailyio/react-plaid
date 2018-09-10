@@ -85,9 +85,9 @@ class ReactPlaid extends Component {
     this.props.onSuccess(publicToken, metaData);
   };
 
-  handleExit = () => {
+  handleExit = (...args) => {
     this.open = false;
-    this.props.onExit.apply(this, arguments);
+    this.props.onExit(...args)
   };
 
   render() {
