@@ -87,7 +87,7 @@ class ReactPlaid extends Component {
 
   handleExit = (...args) => {
     this.open = false;
-    this.props.onExit(...args)
+    this.props.onExit(...args);
   };
 
   render() {
