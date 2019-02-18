@@ -18,6 +18,10 @@ class ReactPlaid extends Component {
     apiKey: PropTypes.string.isRequired,
     product: PropTypes.array.isRequired,
     token: PropTypes.string,
+    user: PropTypes.shape({
+      legalName: PropTypes.string,
+      emailAddress: PropTypes.string
+    }),
     selectAccount: PropTypes.bool,
     webhook: PropTypes.string,
     onSuccess: PropTypes.func.isRequired,
@@ -48,6 +52,7 @@ class ReactPlaid extends Component {
       key: this.props.apiKey,
       env: this.props.env,
       token: this.props.token,
+      user: this.props.user,
       selectAccount: this.props.selectAccount,
       onLoad: this.handleLoad,
       onSuccess: this.handleSuccess,
