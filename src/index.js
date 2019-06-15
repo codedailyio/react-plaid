@@ -48,6 +48,7 @@ class ReactPlaid extends Component {
       key: this.props.apiKey,
       env: this.props.env,
       selectAccount: this.props.selectAccount,
+      webhook: this.props.webhook,
       onLoad: this.handleLoad,
       onSuccess: this.handleSuccess,
       onExit: this.handleExit,
