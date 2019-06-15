@@ -54,6 +54,7 @@ class ReactPlaid extends Component {
       token: this.props.token,
       user: this.props.user,
       selectAccount: this.props.selectAccount,
+      webhook: this.props.webhook,
       onLoad: this.handleLoad,
       onSuccess: this.handleSuccess,
       onExit: this.handleExit,
