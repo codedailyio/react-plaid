@@ -14,6 +14,9 @@ class ReactPlaid extends Component {
     open: PropTypes.bool,
     clientName: PropTypes.string.isRequired,
     env: PropTypes.oneOf([DEV_ENV, SANDBOX_ENV, PROD_ENV]).isRequired,
+    accountSubtypes: PropTypes.shape({ 
+      depository: PropTypes.array
+    }),
     institution: PropTypes.string,
     apiKey: PropTypes.string.isRequired,
     product: PropTypes.array.isRequired,
@@ -53,6 +56,7 @@ class ReactPlaid extends Component {
       env: this.props.env,
       token: this.props.token,
       user: this.props.user,
+      accountSubtypes: this.props.accountSubtypes,
       selectAccount: this.props.selectAccount,
       webhook: this.props.webhook,
       onLoad: this.handleLoad,
