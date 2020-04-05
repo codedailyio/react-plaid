@@ -1,6 +1,6 @@
 {
-  "name": "react-plaid",
-  "version": "0.10.0",
+  "name": "react-plaid-2",
+  "version": "0.10.1",
   "description": "React plaid link",
   "main": "lib/index",
   "scripts": {
