@@ -22,6 +22,9 @@ class ReactPlaid extends Component {
       legalName: PropTypes.string,
       emailAddress: PropTypes.string
     }),
+    accountSubtypes: PropTypes.shape({
+      depository: PropTypes.arrayOf(PropTypes.string),
+    }),
     selectAccount: PropTypes.bool,
     webhook: PropTypes.string,
     linkCustomizationName: PropTypes.string,
@@ -55,6 +58,7 @@ class ReactPlaid extends Component {
       token: this.props.token,
       user: this.props.user,
       selectAccount: this.props.selectAccount,
+      accountSubtypes: this.props.accountSubtypes,
       webhook: this.props.webhook,
       linkCustomizationName: this.props.linkCustomizationName,
       onLoad: this.handleLoad,
